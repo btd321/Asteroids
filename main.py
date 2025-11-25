@@ -41,6 +41,12 @@ def main():
                 return sys.exit()
         for obj in drawable:
             obj.draw(screen)
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collides_with(asteroid):
+                    log_event("asteroid_shot")
+                    asteroid.kill()
+                    shot.kill()
         pygame.display.flip()
         dt = clock_obj.tick(60)/1000
         
